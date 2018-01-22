@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui"> 
+    <h:head>
+        <title>Facelet Title</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="../../favicon.ico"></link>
+        <!-- Bootstrap core CSS -->
+        <link href="Resources/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="Resources/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+        <!-- Custom styles for this template -->
+        <link href="Resources/dashboard.css" rel="stylesheet"/>
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="Resources/assets/js/ie-emulation-modes-warning.js"></script>
+        <style type="text/css">
+            .centrado{
+                margin:10px auto;
+                display:block;
+            }
+            .ui-panelgrid td, .ui-panelgrid tr
+            {
+                border-style: none !important
+            }
+            .activo{
+                background-color: #D8D5D5
+
+            }
+
+            .activo2{
+                background-color: palevioletred
+
+            }
+        </style>
+        <!--<f:event type="preRenderView" listener="#{plantillaController.verificarSesion()}"/>
+        <f:event type="preRenderView" listener="#{clientesBeanAdmon.listartodosId()}"/>
+        <f:event type="preRenderView" listener="#{clientesBeanAdmon.listarPersona()}"/>
+        <f:event type="preRenderView" listener="#{clientesBeanAdmon.listarclientes()}"/>
+        -->
+        <script type="text/javascript">
+            function limpiarForm() {
+                document.getElementById("frm").reset();
+            }
+        </script>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">ALIBRAND</a>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div id="navbar" class="col-sm-3 col-md-2 sidebar collapse">
+                    <ul class="nav nav-sidebar">
+                        <li class="active"><img  class="centrado " height="100" width="150"  id="imagen" src="../images/ALIBRANDC.png"/></li>
+                    </ul>
+                    <ul class="nav nav-sidebar ">
+                        <li><a href="formIngresoClientes.xhtml">Ingreso de Clientes</a></li>
+                    </ul>
+
+                    <ul class="nav nav-sidebar activo">
+                        <li><a href="formIngresoProductos.xhtml">Ingreso de Productos</a></li>
+                    </ul>
+
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formInventario.xhtml">Inventario</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formSucursales.xhtml">Sucursales</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formCotizacion.xhtml">Cotizacion</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formFacturacion.xhtml">Facturacion</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formEnvio.xhtml">Envio</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formIngresoEmpleado.xhtml">Ingreso de Empleados</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="formIngresoUsuario.xhtml">Ingreso de Usuarios</a></li>
+                    </ul>
+                    <ul class="nav nav-sidebar">
+                        <li><a href="">Reportes</a></li>
+                    </ul>
+                    <br/><br/><br/>
+
+                </div>
+
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ">  
+                    <b:panel title="Ingreso de Productos"
+                             look="primary" collapsible="false" style=" background-color:#F7F5F5">
+                        <center>
+                            <h2>Ingreso de Productos</h2>
+                            <img  class="centrado" id="imagen" src="../images/nuevoproducto.png" />
+                            <br/><br/><br/>
+                            <b:tabView activeIndex="0">
+                                <b:tab title="Camisolas">
+                                    <h:form id="frm">
+                                        <br/><br/><br/>
+                                        <p:panelGrid columns="4"   styleClass="ui-panelgrid-blank">                    
+                                            <p:outputLabel value="Sucursal:"/>
+                                            <b:selectOneMenu value=""  required="true"  style="width: 150px">
+                                                <f:selectItems itemLabel="(Please select)" itemValue="" />
+                                                <f:selectItems value="" var="perso" itemLabel="" itemValue="" />              
+                                            </b:selectOneMenu> 
+                                            <p:outputLabel value="Descripcion:"/>
+                                            <p:inputText id="descripcion" />
+                                            <p:outputLabel value="Precio Costo :"/>
+                                            <p:inputText id="costo" />
+                                            <p:outputLabel value="Margen de Ganancia:"/>
+                                            <b:selectOneMenu value=""  required="true"  style="width: 150px">
+                                                <f:selectItems itemLabel="(Please select)" itemValue="" />
+                                                <f:selectItems value="" var="persona" itemLabel="" itemValue="" />              
+                                            </b:selectOneMenu> 
+                                            <p:outputLabel value="Precio Venta:"/>
+                                            <p:inputText id="venta" />
+                                            <p:outputLabel value="Cantidad Total:"/>
+                                            <p:inputText id="total" />
+                                            <p:outputLabel value="Talla S:"/>
+                                            <p:inputText id="tallas" />
+                                            <p:outputLabel value="Talla M:"/>
+                                            <p:inputText id="tallam" />
+                                            <p:outputLabel value="Talla L:"/>
+                                            <p:inputText id="tallal" />
+                                            <p:outputLabel value="Talla XL:"/>
+                                            <p:inputText id="tallaxl" />
+                                            <p:outputLabel value="Talla XXL:"/>
+                                            <p:inputText id="tallaxxl" />
+
+
+
+                                        </p:panelGrid>
+                                        <br/><br/><br/><br/>
+                                        <p:commandButton class="uk-button uk-button-default" value="Nuevo" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+                                        <p:commandButton class="uk-button uk-button-default" value="Cancelar" />
+
+                                        <br/><br/><br/><br/>
+
+                                        <p:dataTable   var="productos" value="" reflow="true">
+                                            <p:column headerText="Codigo">
+                                                <h:outputText value="1001" />
+                                            </p:column>
+
+                                            <p:column headerText="Descripcion">
+                                                <h:outputText value="Camisola Barcelona 2018 azulgrana" />
+                                            </p:column>
+
+                                            <p:column headerText="Tipo Producto">
+                                                <h:outputText value="Camisola Futbol" />
+                                            </p:column>
+
+                                            <p:column headerText="Precio Costo">
+                                                <h:outputText value="C$.100.00" />
+                                            </p:column>
+                                            <p:column headerText="Margen de Ganancia">
+                                                <h:outputText value="5%" />
+                                            </p:column>
+                                            <p:column headerText="Precio Venta">
+                                                <h:outputText value="C$.105.00" />
+                                            </p:column>
+                                            <p:column headerText="Modificar">
+                                                <p:commandButton class="uk-button uk-button-default" value="Modificar" />
+                                            </p:column>
+                                            <p:column headerText="Eliminar">
+                                                <p:commandButton class="uk-button uk-button-default" value="Eliminar" />
+                                            </p:column>
+                                        </p:dataTable>
+                                    </h:form>    
+                                </b:tab>
+                                <b:tab title="Balones">
+                                    <p>This is askdm-laskmdlamksldk second tab.</p>
+                                </b:tab>
+                                <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+                                <b:tab title="Zapatos">
+                                    sakdlkasdlknasñkndñknasñlkdnñlksnadñlknasñklnd
+                                </b:tab>
+                                <b:tab title="Fancy tab">
+                                    <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+                                    <p>This is fancy tab with a spinning image.</p>
+                                </b:tab>
+
+                            </b:tabView>
+
+                        </center>
+                        <b:messages />
+                    </b:panel>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <script src="Resources/dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="Resources/assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="Resources/assets/js/ie10-viewport-bug-workaround.js"></script>
+    </h:body>
+</html>
+
