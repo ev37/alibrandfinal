@@ -121,6 +121,8 @@
                             <h2>Cotizacion</h2>
                             <img  class="centrado" id="imagen" src="../images/cotizacion.png" />
                             <br/><br/><br/>
+                            <!-- AQUI INICIA EL CODIGO PRIMERA PESTAÑA--><!-- AQUI INICIA EL CODIGO PRIMERA PESTAÑA-->
+                            <!-- AQUI INICIA EL CODIGO PRIMERA PESTAÑA--><!-- AQUI INICIA EL CODIGO PRIMERA PESTAÑA-->
                             <b:tabView activeIndex="0">
                                 <b:tab title="Nueva Cotizacion">
                                     <h:form id="frm">
@@ -381,6 +383,26 @@
                                                     </p:column>
 
                                                 </p:row>
+                                                <p:row>  
+                                                    <p:column>  
+
+                                                    </p:column> 
+                                                    <p:column>
+
+                                                    </p:column>
+                                                    <p:column>
+
+                                                    </p:column>
+                                                    <p:column>
+                                                        <p:commandButton class="uk-button uk-button-default" value="Guardar" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+                                                        <p:commandButton class="uk-button uk-button-default" value="Imprimir" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+
+                                                    </p:column>
+                                                    <p:column>
+
+                                                    </p:column>
+
+                                                </p:row>
 
                                             </p:panelGrid>
                                         </b:panel>
@@ -388,30 +410,40 @@
 
                                     </h:form>    
                                 </b:tab>
+                                <!-- AQUI INICIA EL CODIGO SEGUNDA PESTAÑA--><!-- AQUI INICIA EL CODIGO SEGUNDA PESTAÑA-->
+                                <!-- AQUI INICIA EL CODIGO SEGUNDA PESTAÑA--><!-- AQUI INICIA EL CODIGO SEGUNDA PESTAÑA-->
                                 <b:tab title="Buscar Cotizacion">
-                                    
+
                                     <h:form id="frm">
                                         <br/><br/><br/>
-                                        <p:panelGrid columns="6"   styleClass="ui-panelgrid-blank"> 
+                                        <p:panelGrid columns="4"   styleClass="ui-panelgrid-blank"> 
 
                                             <p:outputLabel value="Serie:"/>
-                                            <p:inputText disabled="true" id="serie" />
+                                            <p:autoComplete id="serie" dropdown="true" value="#{autoCompleteView.txt6}" />
+                                            <p:outputLabel value="Numero:"/>
+                                            <p:autoComplete id="numero" dropdown="true" value="#{autoCompleteView.txt6}" />
+
+
+                                        </p:panelGrid>
+                                        <br/>
+                                        <p:commandButton class="uk-button uk-button-default" value="Consultar" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+                                        <p:commandButton class="uk-button uk-button-default" value="Imprimir" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+                                        <br/><br/><br/>
+
+                                        <p:panelGrid columns="6"   styleClass="ui-panelgrid-blank">
+                                            
                                             <p:outputLabel value="Codigo de empleado:"/>
                                             <p:inputText disabled="true" id="empleado" />
                                             <p:outputLabel value="Fecha:"/>
                                             <p:inputText disabled="true" id="fecha" />
-
-                                        </p:panelGrid>
-                                        <br/>
-
-
-                                        <p:panelGrid columns="6"   styleClass="ui-panelgrid-blank">
+                                            <p:outputLabel value="-"/>
+                                            <p:outputLabel value="-"/>
                                             <p:outputLabel value="NO.RUC:" for="dd" />
-                                            <p:autoComplete id="dd" dropdown="true" value="#{autoCompleteView.txt6}" completeMethod="#{autoCompleteView.completeText}" />
+                                            <p:inputText disabled="true" id="dd" />
                                             <p:outputLabel value="Nombre:"/>
-                                            <p:inputText id="nombre" />
+                                            <p:inputText disabled="true" id="nombre" />
                                             <p:outputLabel value="Direccion:"/>
-                                            <p:inputText id="direccion" />
+                                            <p:inputText disabled="true" id="direccion" />
                                         </p:panelGrid>
                                         <br/>
 
@@ -436,10 +468,10 @@
 
                                                 <p:row>  
                                                     <p:column>  
-                                                        <p:spinner id="minMax1" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
+                                                        <p:spinner disabled="true" id="minMax1" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
                                                     </p:column> 
                                                     <p:column>
-                                                        <b:selectOneMenu  value="#{selectOneMenuBean.brand}"  required="true" >
+                                                        <b:selectOneMenu disabled="true" value="#{selectOneMenuBean.brand}"  required="true" >
                                                             <f:selectItem itemLabel="(Codigo)" itemValue="" />
                                                             <f:selectItem itemLabel="Fiat" itemValue="1" />
                                                             <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -447,10 +479,10 @@
                                                         </b:selectOneMenu>
                                                     </p:column>
                                                     <p:column>
-                                                        <p:inputText />
+                                                        <p:inputText disabled="true" />
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -460,7 +492,7 @@
                                                         </b:inputText>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -473,11 +505,11 @@
                                                 </p:row>
                                                 <p:row>  
                                                     <p:column>  
-                                                        <p:spinner id="minMax2" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
+                                                        <p:spinner disabled="true" id="minMax2" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
 
                                                     </p:column> 
                                                     <p:column>
-                                                        <b:selectOneMenu  value="#{selectOneMenuBean.brand}"  required="true" >
+                                                        <b:selectOneMenu disabled="true"  value="#{selectOneMenuBean.brand}"  required="true" >
                                                             <f:selectItem itemLabel="(Codigo)" itemValue="" />
                                                             <f:selectItem itemLabel="Fiat" itemValue="1" />
                                                             <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -485,10 +517,10 @@
                                                         </b:selectOneMenu>
                                                     </p:column>
                                                     <p:column>
-                                                        <p:inputText />
+                                                        <p:inputText disabled="true" />
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true"  size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -498,7 +530,7 @@
                                                         </b:inputText>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -511,11 +543,11 @@
                                                 </p:row>
                                                 <p:row>  
                                                     <p:column>  
-                                                        <p:spinner id="minMax3" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
+                                                        <p:spinner disabled="true" id="minMax3" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
 
                                                     </p:column> 
                                                     <p:column>
-                                                        <b:selectOneMenu  value="#{selectOneMenuBean.brand}"  required="true" >
+                                                        <b:selectOneMenu disabled="true"  value="#{selectOneMenuBean.brand}"  required="true" >
                                                             <f:selectItem itemLabel="(Codigo)" itemValue="" />
                                                             <f:selectItem itemLabel="Fiat" itemValue="1" />
                                                             <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -523,10 +555,10 @@
                                                         </b:selectOneMenu>
                                                     </p:column>
                                                     <p:column>
-                                                        <p:inputText />
+                                                        <p:inputText disabled="true" />
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -536,7 +568,7 @@
                                                         </b:inputText>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -549,11 +581,11 @@
                                                 </p:row>
                                                 <p:row>  
                                                     <p:column>  
-                                                        <p:spinner id="minMax4" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
+                                                        <p:spinner disabled="true" id="minMax4" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
 
                                                     </p:column> 
                                                     <p:column>
-                                                        <b:selectOneMenu  value="#{selectOneMenuBean.brand}"  required="true" >
+                                                        <b:selectOneMenu disabled="true"  value="#{selectOneMenuBean.brand}"  required="true" >
                                                             <f:selectItem itemLabel="(Codigo)" itemValue="" />
                                                             <f:selectItem itemLabel="Fiat" itemValue="1" />
                                                             <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -561,10 +593,10 @@
                                                         </b:selectOneMenu>
                                                     </p:column>
                                                     <p:column>
-                                                        <p:inputText />
+                                                        <p:inputText disabled="true" />
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -574,7 +606,7 @@
                                                         </b:inputText>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -587,11 +619,11 @@
                                                 </p:row>
                                                 <p:row>  
                                                     <p:column>  
-                                                        <p:spinner id="minMax5" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
+                                                        <p:spinner disabled="true" id="minMax5" value="#{spinnerView.number3}" min="0" max="100"  size="5" />
 
                                                     </p:column> 
                                                     <p:column>
-                                                        <b:selectOneMenu  value="#{selectOneMenuBean.brand}"  required="true" >
+                                                        <b:selectOneMenu disabled="true"  value="#{selectOneMenuBean.brand}"  required="true" >
                                                             <f:selectItem itemLabel="(Codigo)" itemValue="" />
                                                             <f:selectItem itemLabel="Fiat" itemValue="1" />
                                                             <f:selectItem itemLabel="Honda" itemValue="2" />
@@ -599,10 +631,10 @@
                                                         </b:selectOneMenu>
                                                     </p:column>
                                                     <p:column>
-                                                        <p:inputText />
+                                                        <p:inputText disabled="true" />
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10"  >
+                                                        <b:inputText disabled="true" size="10"  >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -612,7 +644,7 @@
                                                         </b:inputText>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -637,7 +669,7 @@
                                                         <p:outputLabel value="GRAN TOTAL:"/>
                                                     </p:column>
                                                     <p:column>
-                                                        <b:inputText size="10" >
+                                                        <b:inputText disabled="true" size="10" >
                                                             <f:facet name="prepend">
                                                                 <h:outputText value="C$" />
                                                             </f:facet>
@@ -645,6 +677,25 @@
                                                                 <h:outputText value=".00" />
                                                             </f:facet>
                                                         </b:inputText>
+                                                    </p:column>
+
+                                                </p:row>
+                                                <p:row>  
+                                                    <p:column>  
+
+                                                    </p:column> 
+                                                    <p:column>
+
+                                                    </p:column>
+                                                    <p:column>
+
+                                                    </p:column>
+                                                    <p:column>
+
+
+                                                    </p:column>
+                                                    <p:column>
+
                                                     </p:column>
 
                                                 </p:row>
