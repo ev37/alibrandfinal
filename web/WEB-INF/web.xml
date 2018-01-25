@@ -19,6 +19,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+<<<<<<< HEAD
         <welcome-file>faces/index.xhtml</welcome-file>
+=======
+        <welcome-file>faces/index.html</welcome-file>
+>>>>>>> origin/master
     </welcome-file-list>
 </web-app>
