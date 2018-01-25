@@ -7,6 +7,7 @@ public class Usuarios{
   private String nombre = null;
   private String contraseña = null;
   private int tipo_usuario = 0;
+  private int idEmpleado = 0;
 
   public Usuarios() {
     id_usuario = 0;
@@ -16,6 +17,14 @@ public class Usuarios{
 
   }
 
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+  
   public int getId_usuario() {
     return id_usuario;
   }

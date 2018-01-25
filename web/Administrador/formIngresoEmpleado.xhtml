@@ -55,6 +55,7 @@
                 document.getElementById("frm").reset();
             }
         </script>
+        <f:event type="preRenderView" listener="#{puestoBean.listar()}"/>
     </h:head>
     <h:body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -124,22 +125,22 @@
                             <h:form id="frm">
                                 <p:panelGrid columns="4"   styleClass="ui-panelgrid-blank">  
                                     <p:outputLabel value="Nombre:"/>
-                                    <p:inputText  id="nombre" />
+                                    <p:inputText  id="nombre"  value="#{empleadoBean.emp.nombreEmplado}"/>
                                     <p:outputLabel value="Direccion:"/>
-                                    <p:inputText id="direccion" />
+                                    <p:inputText id="direccion" value="#{empleadoBean.emp.direccion}"/>
                                     <p:outputLabel value="Puesto:"/>
-                                    <b:selectOneMenu value=""  required="true"  style="width: 150px">
+                                    <b:selectOneMenu value="#{empleadoBean.emp.idPuesto}"  required="true"  style="width: 150px">
                                         <f:selectItems itemLabel="(Please select)" itemValue="" />
-                                        <f:selectItems value="" var="perso" itemLabel="" itemValue="" />              
+                                        <f:selectItems value="#{puestoBean.lstPuesto}" var="pues" itemLabel="#{pues.puesto}" itemValue="#{pues.idPuesto}" />              
                                     </b:selectOneMenu> 
                                     <p:outputLabel value="Telefono Claro:"/>
-                                    <p:inputText  id="claro" />
+                                    <p:inputText  id="claro" value="#{empleadoBean.emp.telefono}"/>
                                     <p:outputLabel value="Telefono Movistar:"/>
-                                    <p:inputText  id="movistar" />
+                                    <p:inputText  id="movistar" value="#{empleadoBean.emp.telefono2}"/>
                                     <p:outputLabel value="Email:"/>
-                                    <p:inputText  id="email" />
+                                    <p:inputText  id="email" value="#{empleadoBean.emp.email}"/>
                                     <p:outputLabel value="Sucursal:"/>
-                                    <b:selectOneMenu value=""  required="true"  style="width: 150px">
+                                    <b:selectOneMenu value="#{}"  required="true"  style="width: 150px">
                                         <f:selectItems itemLabel="(Please select)" itemValue="" />
                                         <f:selectItems value="" var="perso" itemLabel="" itemValue="" />              
                                     </b:selectOneMenu> 
