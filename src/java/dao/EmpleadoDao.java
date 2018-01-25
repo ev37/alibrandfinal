@@ -20,16 +20,15 @@ public class EmpleadoDao extends DAO{
     public void ingresar(Empleado emp) throws Exception{
         try {
             this.conectar();
-            query = "insert into empleado (id_empleado, nombre_empleado, telefono, telefono_2, id_compania, id_puesto, id_sucursal, direccion, email) values(null,?,?,?,?,?,?,?,?)";
+            query = "insert into empleado (nombre_empleado, telefono_claro, telefono_movistar, id_puesto, id_sucursal, direccion, email) values(?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
-            sta.setString(2, emp.getNombreEmplado());
-            sta.setInt(3, emp.getTelefono());
-            sta.setInt(4, emp.getTelefono2());
-            sta.setInt(5, emp.getIdCompania());
-            sta.setInt(6, emp.getIdPuesto());
-            sta.setInt(7, emp.getIdSucursal());
-            sta.setString(8, emp.getDireccion());
-            sta.setString(9, emp.getEmail());
+            sta.setString(1, emp.getNombreEmplado());
+            sta.setInt(2, emp.getTelefono());
+            sta.setInt(3, emp.getTelefono2());
+            sta.setInt(4, emp.getIdPuesto());
+            sta.setInt(5, emp.getIdSucursal());
+            sta.setString(6, emp.getDireccion());
+            sta.setString(7, emp.getEmail());
             sta.executeUpdate();
             
         } catch (Exception ex) {
@@ -74,6 +73,41 @@ public class EmpleadoDao extends DAO{
         return lstEmpleado;
     }
     
+   public ArrayList<innerEmpleado> listarPorId(int idEmpleado) throws Exception{
+        ArrayList<innerEmpleado> lstEmpleado=null;
+        try {
+            this.conectar();
+            query="select * from dato_empleado where id_empleado=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, idEmpleado);
+            res = sta.executeQuery();
+            lstEmpleado = new ArrayList();
+            
+            while(res.next()){
+                innerEmpleado innEmp = new innerEmpleado();
+                
+                innEmp.setDireccion(res.getString("direccion"));
+                innEmp.setDireccionSucursal("direccion_sucursal");
+                innEmp.setEmail(res.getString("email"));
+                innEmp.setIdEmpleado(res.getInt("id_empleado"));
+                innEmp.setIdSucursal(res.getInt("id_sucursal"));
+                innEmp.setNombreEmpleado(res.getString("nombre_empleado"));
+                innEmp.setPuesto(res.getString("nombre_puesto"));
+                innEmp.setSucursal(res.getString("nombre_sucursal"));
+                innEmp.setTelefonoClaro(res.getInt("telefono_claro"));
+                innEmp.setTelefonoMovistar(res.getInt("telefono_movistar"));
+                lstEmpleado.add(innEmp);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            this.cerrar();
+        }
+        
+        return lstEmpleado;
+    }
+    
     public void eliminar(Empleado emp) throws Exception{
         try {
             this.conectar();
@@ -89,7 +123,7 @@ public class EmpleadoDao extends DAO{
         }
     }
     
-    public void modificar(innerEmpleado emp){
+    public void modificar(innerEmpleado emp) throws Exception{
         try {
             this.conectar();
             query = "update empleado set telefono_claro=?, telefono_movistar=?, direccion =?, email=? where id_empleado limit 1";
@@ -102,6 +136,8 @@ public class EmpleadoDao extends DAO{
             sta.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            this.cerrar();
         }
     }
 }

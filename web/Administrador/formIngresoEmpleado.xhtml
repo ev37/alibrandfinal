@@ -56,8 +56,10 @@
             }
         </script>
         <f:event type="preRenderView" listener="#{puestoBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{empleadoBean.listar()}"/>
     </h:head>
-    <h:body>
+    <h:body >
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -140,57 +142,75 @@
                                     <p:outputLabel value="Email:"/>
                                     <p:inputText  id="email" value="#{empleadoBean.emp.email}"/>
                                     <p:outputLabel value="Sucursal:"/>
-                                    <b:selectOneMenu value="#{}"  required="true"  style="width: 150px">
+                                    <b:selectOneMenu value="#{empleadoBean.emp.idSucursal}"  required="true"  style="width: 150px">
                                         <f:selectItems itemLabel="(Please select)" itemValue="" />
-                                        <f:selectItems value="" var="perso" itemLabel="" itemValue="" />              
+                                        <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucur" itemLabel="#{sucur.sucursal}" itemValue="#{sucur.idSucursal}" />              
                                     </b:selectOneMenu> 
                                     <br/><br/><br/>
                                 </p:panelGrid>
-                                <p:commandButton class="uk-button uk-button-default" value="Nuevo" action="#{clientesBeanAdmon.registrarClientes()}" update="frm"/>
+                                <p:commandButton class="uk-button uk-button-default" value="Nuevo" action="#{empleadoBean.ingresar()}" update="frm"/>
                                 <p:commandButton class="uk-button uk-button-default" value="Cancelar" />
                                 <br/><br/><br/>
-                                <p:dataTable   var="sucursales" value="" reflow="true">
+                                <p:dataTable   var="tblEmpleado" value="#{empleadoBean.lstInnEmpleado}" reflow="true">
                                     <p:column headerText="Id">
-                                        <h:outputText value="1001" />
+                                        <h:outputText value="#{tblEmpleado.idEmpleado}" />
                                     </p:column>
 
                                     <p:column headerText="Nombre">
-                                        <h:outputText value="Julio Sequeira" />
+                                        <h:outputText value="#{tblEmpleado.nombreEmpleado}" />
                                     </p:column>
 
                                     <p:column headerText="Direccion">
-                                        <h:outputText value="Managua Nicaragua" />
+                                        <h:outputText value="#{tblEmpleado.direccion}" />
                                     </p:column>
-                                     <p:column headerText="Puesto">
-                                        <h:outputText value="Gerente General" />
+                                    <p:column headerText="Puesto">
+                                        <h:outputText value="#{tblEmpleado.puesto}" />
                                     </p:column>
                                     <p:column headerText="Telefono Claro">
-                                        <h:outputText value="12345678" />
+                                        <h:outputText value="#{tblEmpleado.telefonoClaro}" />
                                     </p:column>
                                     <p:column headerText="Telefono Movistar">
-                                        <h:outputText value="87654321" />
+                                        <h:outputText value="#{tblEmpleado.telefonoMovistar}" />
                                     </p:column>
                                     <p:column headerText="Email">
-                                        <h:outputText value="ejemplo@micorreo.com" />
+                                        <h:outputText value="#{tblEmpleado.email}" />
                                     </p:column>
                                     <p:column headerText="Sucursal">
-                                        <h:outputText value="ALIBRAND Managua" />
+                                        <h:outputText value="#{tblEmpleado.direccionSucursal}" />
                                     </p:column>
                                     <p:column headerText="Modificar">
-                                        <p:commandButton class="uk-button uk-button-default" value="Modificar" />
+                                        <b:row>
+                                            <b:column span="3">
+                                                <b:commandButton value="Modificar" look="success"
+                                                                 oncomplete="PF('modificar').show()"
+                                                                 size="m" actionListener="#{empleadoBean.listarPorId(tblEmpleado.idEmpleado)}" update=":modificarDato"/>
+                                            </b:column>
+                                        </b:row>
                                     </p:column>
                                     <p:column headerText="Eliminar">
                                         <p:commandButton class="uk-button uk-button-default" value="Eliminar" />
                                     </p:column>
                                 </p:dataTable>
-
-
                             </h:form>
-
-
                         </center>
-                        <b:messages />
                     </b:panel>
+                    <p:dialog header="Datos" widgetVar="modificar" id="modificarDato">
+                        <h:form>
+                            
+                            <b:dataTable value="#{empleadoBean.lstInnEmpleado}"
+                                         var="car"
+                                         widgetVar="tableWidgetVar"
+                                         responsive="true"
+                                         scroll-horizontally="true">
+                                <b:dataTableColumn value="#{car.telefonoMovistar}" />
+                                <b:dataTableColumn value="#{car.telefonoClaro}" />
+                            </b:dataTable>
+                            <f:facet name="footer">
+                                <b:button value="Close" dismiss="modal" />
+                                <b:button value="Ok" look="primary" dismiss="modal" />
+                            </f:facet>
+                        </h:form>
+                    </p:dialog>
                 </div>
             </div>
         </div>

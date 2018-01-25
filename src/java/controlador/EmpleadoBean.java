@@ -57,7 +57,6 @@ public class EmpleadoBean {
         try {
             empDao = new EmpleadoDao();
             empDao.ingresar(emp);
-            System.out.println(emp.getIdPuesto());
         } catch (Exception e) {
             System.out.println("Error al ingresar en el bean");
         }
@@ -90,6 +89,17 @@ public class EmpleadoBean {
             empDao = new EmpleadoDao();
             lstInnEmpleado = empDao.listar();
         } catch (Exception e) {
+        }
+    }
+    
+    public void listarPorId(int idEmpleado){
+        EmpleadoDao empDao;
+        
+        try {
+            empDao = new EmpleadoDao();
+            lstInnEmpleado = empDao.listarPorId(idEmpleado);
+        } catch (Exception e) {
+            System.err.println("Error al Buscar por id en el bean");
         }
     }
 }
